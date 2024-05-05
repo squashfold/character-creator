@@ -10,6 +10,7 @@ interface CharacterPartOptions {
     name: string;
     src: string;
     fillColor: string;
+    strokeColor?: string;
 }
 
 interface CharacterParts {
@@ -30,17 +31,20 @@ export const type1: CharacterParts = {
             {
                 name: 'head1',
                 src: head1,
-                fillColor: '#eeeeee'
+                fillColor: '#eeeeee',
+                strokeColor: '#000'
             },
             {
                 name: 'head2',
                 src: head2,
-                fillColor: '#eeeeee'
+                fillColor: '#eeeeee',
+                strokeColor: '#000'
             },
             {
                 name: 'head3',
                 src: head3,
-                fillColor: '#eeeeee'
+                fillColor: '#eeeeee',
+                strokeColor: '#000'
             },
         ],
     },
@@ -50,17 +54,20 @@ export const type1: CharacterParts = {
             {
                 name: 'eyes1',
                 src: eyes1,
-                fillColor: '#eeeeee'
+                fillColor: '#ffffff',
+                strokeColor: '#000'
             },
             {
                 name: 'eyes2',
                 src: eyes2,
-                fillColor: '#eeeeee'
+                fillColor: '#ffffff',
+                strokeColor: '#000'
             },
             {
                 name: 'eyes3',
                 src: eyes3,
-                fillColor: '#eeeeee'
+                fillColor: '#ffffff',
+                strokeColor: '#000'
             },
         ],
     },
