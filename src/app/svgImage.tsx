@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Image as KonvaImage } from 'react-konva';
 
-const SvgImage = ({ src, fillColor, useKonva, className = '', id }: { src: string | null, fillColor?: string, useKonva?: boolean, className?: string, id: string }) => {
+const SvgImage = ({ src, fillColor, useKonva, className = '', id, width, height, x, y }: { src: string | null, fillColor?: string, useKonva?: boolean, className?: string, id: string, width?: number, height?: number, x?: number, y?: number }) => {
     const [image, setImage] = useState<HTMLImageElement | null>(null);
     useEffect(() => {
       if (src === null) {
@@ -31,8 +31,20 @@ const SvgImage = ({ src, fillColor, useKonva, className = '', id }: { src: strin
     if (!src || !image) return null; // Return null if src or image is null
   
     return useKonva ? 
-      <KonvaImage image={image} width={540} height={540} id={id}/> : 
-      <img src={image.src} alt="" width={540} height={540} className={className} id={id} />;
+      <KonvaImage
+        image={image}
+        width={width ? width : 1080}
+        height={height ? height : 1080}
+        x={x ? x : 0}
+        y={y ? y : 0}
+        id={id}/> : 
+      <img 
+        src={image.src} 
+        alt="" 
+        width={width ? width : 1080} 
+        height={height ? height : 1080} 
+        className={className} 
+        id={id} />;
 };
 
 export default SvgImage;

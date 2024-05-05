@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 1080 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,0,-2473)">
-        <g id="Glasses-1" serif:id="Glasses 1" transform="matrix(1,0,0,1,0,2473)">
-            <rect x="0" y="0" width="1080" height="1080" style="fill:none;"/>
+<svg width="100%" height="100%" viewBox="0 0 746 277" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-168,-2874)">
+        <g transform="matrix(1,0,0,1,0,2473)">
             <g id="glasses2">
                 <g transform="matrix(1,0,0,1,-1.17828,-18.684)">
-                    <g transform="matrix(1,-0,-0,1,1.17828,18.684)">
-                        <use xlink:href="#_Image1" x="220.472" y="467.335" width="303px" height="200px"/>
+                    <g transform="matrix(1,-0,-0,1,169.178,419.684)">
+                        <use xlink:href="#_Image1" x="52.472" y="66.335" width="303px" height="200px"/>
                     </g>
                 </g>
                 <g transform="matrix(-1,0,0,1,1081.18,-17.9254)">
-                    <g transform="matrix(-1,0,0,1,1081.18,17.9254)">
-                        <use xlink:href="#_Image2" x="556.878" y="465.143" width="305px" height="204px"/>
+                    <g transform="matrix(-1,0,0,1,913.178,418.925)">
+                        <use xlink:href="#_Image2" x="388.878" y="64.143" width="305px" height="204px"/>
                     </g>
                 </g>
-                <use xlink:href="#_Image3" x="188" y="412" width="40px" height="168px"/>
+                <g transform="matrix(1,-0,-0,1,168,401)">
+                    <use xlink:href="#_Image3" x="20" y="11" width="40px" height="168px"/>
+                </g>
                 <g transform="matrix(-1,0,0,1,1081.18,0)">
-                    <g transform="matrix(-1,0,0,1,1081.18,-0)">
-                        <use xlink:href="#_Image4" x="851.178" y="412" width="41px" height="168px"/>
+                    <g transform="matrix(-1,0,0,1,913.178,401)">
+                        <use xlink:href="#_Image4" x="683.178" y="11" width="41px" height="168px"/>
                     </g>
                 </g>
                 <g transform="matrix(1.21509,-0.00438842,-0.00438842,1.00009,-113.785,2.32153)">
-                    <g transform="matrix(0.822997,0.00361134,0.00361134,0.999926,93.6367,-1.91044)">
-                        <use xlink:href="#_Image5" x="520.59" y="563.509" width="40px" height="10px"/>
+                    <g transform="matrix(0.822997,0.00361134,0.00361134,0.999926,233.348,399.667)">
+                        <use xlink:href="#_Image5" x="352.59" y="162.509" width="40px" height="10px"/>
                     </g>
                 </g>
             </g>

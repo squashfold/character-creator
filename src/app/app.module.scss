@@ -15,11 +15,23 @@
     }
 }
 
+.options {
+    // border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 20px;
+    z-index: 10;
+
+}
+
 .optionsList {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: stretch;
+    z-index: 10;
 }
 
 .previewImage {
