@@ -21,15 +21,17 @@ interface OptionsComponentProps {
     };
 
     return (
-        <div>
-            <button className={styles.accordionHeader} onClick={toggleOpen}>
+        <div className={styles.accordion}>
+            <button className={`${styles.accordionHeader} ${isOpen ? styles.accordionHeaderOpen : styles.accordionHeaderClosed}`} onClick={toggleOpen}>
                 {groupName && (<h2>{groupName}</h2>)}
             </button>
             <div className={`${styles.accordionContent}  ${isOpen ? styles.open : styles.closed}`}>
             <div className={`${styles.optionsList}`}>
                 {options.map((option, index) => (
                     <button className={styles.optionButton} key={index} onClick={() => setOption(option)}>
-                        <SvgImage id={index.toString()} className={styles.previewImage} src={option.src} fillColor={color && color} useKonva={false} />
+                        <div className={styles.previewImageContainer}>
+                            <SvgImage id={index.toString()} className={styles.previewImage} src={option.src} fillColor={color && color} useKonva={false} />
+                        </div>
                         <p>{option.name}</p>
                     </button>
                 ))}

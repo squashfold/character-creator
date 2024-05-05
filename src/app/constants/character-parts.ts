@@ -11,6 +11,7 @@ import mouth1 from '../../assets/character-parts/type1/mouth1.svg'
 import mouth2 from '../../assets/character-parts/type1/mouth2.svg'
 import mouth3 from '../../assets/character-parts/type1/mouth3.svg'
 import mouth4 from '../../assets/character-parts/type1/mouth4.svg'
+import ears1 from '../../assets/character-parts/type1/ears1.svg'
 
 export interface CharacterPartOptions {
     name: string;
@@ -35,6 +36,11 @@ export interface CharacterParts {
         options: CharacterPartOptions[];
     };
     mouth: {
+        defaultFill: string;
+        name: string;
+        options: CharacterPartOptions[];
+    };
+    ears: {
         defaultFill: string;
         name: string;
         options: CharacterPartOptions[];
@@ -161,6 +167,22 @@ export const type1: CharacterParts = {
                 height: 59.7,
                 x: 455,
                 y: 785.9,
+            },
+        ],
+    },
+    ears: {
+        name: 'Ears',
+        defaultFill: '#eeeeee',
+        options: [
+            {
+                name: 'ears1',
+                src: ears1,
+                fillColor: '#ffffff',
+                strokeColor: '#000',
+                width: 904.3,
+                height: 225,
+                x: 87.8,
+                y: 427.5,
             },
         ],
     },

@@ -7,6 +7,9 @@
 
 .stage {
     // border: 2px solid green;
+    width: 540px;
+    height: 540px;
+    overflow: hidden;
 
     > * {
         
@@ -32,10 +35,19 @@
     justify-content: flex-start;
     align-items: stretch;
     z-index: 10;
+    gap: .5rem;
+}
+
+.previewImageContainer {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
 }
 
 .previewImage {
-    width: 100px;
+    width: 100%;
     height: auto;
 }
 
@@ -43,12 +55,35 @@
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     padding: 10px;
-    margin: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
         background-color: #e0e0e0;
+    }
+}
+
+.accordion {
+    margin-bottom: 1rem;
+}
+
+.accordionHeader {
+    width: 100%;
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordionHeaderClosed {
+    &::after {
+        content: '+';
+    }
+}
+
+.accordionHeaderOpen {
+    &::after {
+        content: '-';
     }
 }
 
