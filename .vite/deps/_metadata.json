@@ -1,0 +1,40 @@
+{
+  "hash": "36094d64",
+  "configHash": "5861062a",
+  "lockfileHash": "00c3afcb",
+  "browserHash": "9e51b830",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "da4f52ca",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "d1c91617",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "3faf02c9",
+      "needsInterop": true
+    },
+    "react-konva": {
+      "src": "../../node_modules/react-konva/es/ReactKonva.js",
+      "file": "react-konva.js",
+      "fileHash": "5c3867e8",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-QFGDSYTV": {
+      "file": "chunk-QFGDSYTV.js"
+    },
+    "chunk-5VW2NNEB": {
+      "file": "chunk-5VW2NNEB.js"
+    }
+  }
+}
