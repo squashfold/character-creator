@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Image as KonvaImage } from 'react-konva';
 
-const SvgImage = ({ src, fillColor, useKonva, className = '', id, width, height, x, y }: { src: string | null, fillColor?: string, useKonva?: boolean, className?: string, id: string, width?: number, height?: number, x?: number, y?: number }) => {
+const SvgImage = ({ src, fillColor, useKonva, className = '', id, width, height, x, y, draggable = false }: { src: string | null, fillColor?: string, useKonva?: boolean, className?: string, id: string, width?: number, height?: number, x?: number, y?: number, draggable?: boolean }) => {
     const [image, setImage] = useState<HTMLImageElement | null>(null);
     useEffect(() => {
       if (src === null) {
@@ -37,7 +37,9 @@ const SvgImage = ({ src, fillColor, useKonva, className = '', id, width, height,
         height={height ? height : 1080}
         x={x ? x : 0}
         y={y ? y : 0}
-        id={id}/> : 
+        id={id}
+        draggable={draggable ? true : false}
+        /> : 
       <img 
         src={image.src} 
         alt="" 

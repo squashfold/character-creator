@@ -59,6 +59,7 @@ export function App() {
             fillColor={mouthColor}
             x={mouthImageOption.x}
             y={mouthImageOption.y}
+            draggable
             useKonva
           />
         </Layer>
