@@ -1,7 +1,7 @@
 // import face1 from '@characterParts/type1/face1.svg'
-import face1 from '../../assets/character-parts/type1/face1.svg'
-import face2 from '../../assets/character-parts/type1/face2.svg'
-import face3 from '../../assets/character-parts/type1/face3.svg'
+import head1 from '../../assets/character-parts/type1/head1.svg'
+import head2 from '../../assets/character-parts/type1/head2.svg'
+import head3 from '../../assets/character-parts/type1/head3.svg'
 import eyes1 from '../../assets/character-parts/type1/eyes1.svg'
 import eyes2 from '../../assets/character-parts/type1/eyes2.svg'
 import eyes3 from '../../assets/character-parts/type1/eyes3.svg'
@@ -9,6 +9,8 @@ import eyes3 from '../../assets/character-parts/type1/eyes3.svg'
 interface CharacterPartOptions {
     name: string;
     src: string;
+    fillColor: string;
+    strokeColor?: string;
 }
 
 interface CharacterParts {
@@ -24,36 +26,48 @@ interface CharacterParts {
 
 export const type1: CharacterParts = {
     head: {
-        defaultFill: '#eee',
+        defaultFill: '#eeeeee',
         options: [
             {
-                name: 'Head 1',
-                src: face1,
+                name: 'head1',
+                src: head1,
+                fillColor: '#eeeeee',
+                strokeColor: '#000'
             },
             {
-                name: 'Head 2',
-                src: face2,
+                name: 'head2',
+                src: head2,
+                fillColor: '#eeeeee',
+                strokeColor: '#000'
             },
             {
-                name: 'Head 3',
-                src: face3,
+                name: 'head3',
+                src: head3,
+                fillColor: '#eeeeee',
+                strokeColor: '#000'
             },
         ],
     },
     eyes: {
-        defaultFill: '#eee',
+        defaultFill: '#eeeeee',
         options: [
             {
-                name: 'Eyes 1',
+                name: 'eyes1',
                 src: eyes1,
+                fillColor: '#ffffff',
+                strokeColor: '#000'
             },
             {
-                name: 'Eyes 2',
+                name: 'eyes2',
                 src: eyes2,
+                fillColor: '#ffffff',
+                strokeColor: '#000'
             },
             {
-                name: 'Eyes 3',
+                name: 'eyes3',
                 src: eyes3,
+                fillColor: '#ffffff',
+                strokeColor: '#000'
             },
         ],
     },
