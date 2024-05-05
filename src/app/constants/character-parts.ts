@@ -7,6 +7,7 @@ import eyes2 from '../../assets/character-parts/type1/eyes2.svg'
 import eyes3 from '../../assets/character-parts/type1/eyes3.svg'
 import glasses1 from '../../assets/character-parts/type1/glasses1.svg'
 import glasses2 from '../../assets/character-parts/type1/glasses2.svg'
+import glasses3 from '../../assets/character-parts/type1/glasses3.svg'
 import mouth1 from '../../assets/character-parts/type1/mouth1.svg'
 import mouth2 from '../../assets/character-parts/type1/mouth2.svg'
 import mouth3 from '../../assets/character-parts/type1/mouth3.svg'
@@ -14,6 +15,7 @@ import mouth4 from '../../assets/character-parts/type1/mouth4.svg'
 import ears1 from '../../assets/character-parts/type1/ears1.svg'
 import hair1 from '../../assets/character-parts/type1/hair1.svg'
 import hair2 from '../../assets/character-parts/type1/hair2.svg'
+import background1 from '../../assets/character-parts/type1/background1.svg'
 
 export interface CharacterPartOptions {
     name: string;
@@ -52,6 +54,10 @@ export interface CharacterParts {
         options: CharacterPartOptions[];
     };
     hair: {
+        name: string;
+        options: CharacterPartOptions[];
+    };
+    background: {
         name: string;
         options: CharacterPartOptions[];
     };
@@ -255,6 +261,36 @@ export const type1: CharacterParts = {
                 x: 189.8,
                 y: 425,
             },
+            {
+                name: 'glasses3',
+                src: glasses3,
+                fillColor: '#ffffff',
+                strokeColor: '#000',
+                width: 691,
+                height: 257.8,
+                x: 198,
+                y: 423,
+            },
         ],
     },
+    background: {
+        name: 'Background',
+        options: [
+            {
+                name: 'none',
+                src: null,
+                fillColor: '#ffffff',
+            },
+            {
+                name: 'background1',
+                src: background1,
+                fillColor: '#ffffff',
+                strokeColor: '#000',
+                width: 1020,
+                height: 1020,
+                x: 30,
+                y: 30,
+            },
+        ],
+    }
 };
