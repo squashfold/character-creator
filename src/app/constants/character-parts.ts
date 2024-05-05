@@ -12,6 +12,8 @@ import mouth2 from '../../assets/character-parts/type1/mouth2.svg'
 import mouth3 from '../../assets/character-parts/type1/mouth3.svg'
 import mouth4 from '../../assets/character-parts/type1/mouth4.svg'
 import ears1 from '../../assets/character-parts/type1/ears1.svg'
+import hair1 from '../../assets/character-parts/type1/hair1.svg'
+import hair2 from '../../assets/character-parts/type1/hair2.svg'
 
 export interface CharacterPartOptions {
     name: string;
@@ -46,6 +48,10 @@ export interface CharacterParts {
         options: CharacterPartOptions[];
     };
     glasses: {
+        name: string;
+        options: CharacterPartOptions[];
+    };
+    hair: {
         name: string;
         options: CharacterPartOptions[];
     };
@@ -175,6 +181,11 @@ export const type1: CharacterParts = {
         defaultFill: '#eeeeee',
         options: [
             {
+                name: 'none',
+                src: null,
+                fillColor: '#ffffff',
+            },
+            {
                 name: 'ears1',
                 src: ears1,
                 fillColor: '#ffffff',
@@ -183,6 +194,36 @@ export const type1: CharacterParts = {
                 height: 225,
                 x: 87.8,
                 y: 427.5,
+            },
+        ],
+    },
+    hair: {
+        name: 'Hair',
+        options: [
+            {
+                name: 'none',
+                src: null,
+                fillColor: '#ffffff',
+            },
+            {
+                name: 'hair1',
+                src: hair1,
+                fillColor: '#ffffff',
+                strokeColor: '#000',
+                width: 748.7,
+                height: 415.1,
+                x: 175.4,
+                y: 109.7,
+            },
+            {
+                name: 'hair2',
+                src: hair2,
+                fillColor: '#ffffff',
+                strokeColor: '#000',
+                width: 810.1,
+                height: 910.5,
+                x: 145.4,
+                y: 59,
             },
         ],
     },

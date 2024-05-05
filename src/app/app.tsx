@@ -9,6 +9,7 @@ export function App() {
   const [faceImageOption, setFaceImageOption] = useState<CharacterPartOptions>(type1.head.options[0]);
   const [eyesImageOption, setEyesImageOption] = useState<CharacterPartOptions>(type1.eyes.options[0]);
   const [earsImageOption, setEarsImageOption] = useState<CharacterPartOptions>(type1.ears.options[0]);
+  const [hairImageOption, setHairImageOption] = useState<CharacterPartOptions>(type1.ears.options[0]);
   const [glassesImageOption, setGlassesImageOption] = useState<CharacterPartOptions>(type1.glasses.options[0]);
   const [mouthImageOption, setMouthImageOption] = useState<CharacterPartOptions>(type1.mouth.options[0]);
   const [faceColor, setFaceColor] = useState<string>(type1.head.options[0].fillColor);
@@ -17,7 +18,8 @@ export function App() {
   const [tempEyesColor, setTempEyesColor] = useState<string>(type1.eyes.options[0].fillColor);
   const [mouthColor, setMouthColor] = useState<string>(type1.mouth.options[0].fillColor);
   const [tempMouthColor, setTempMouthColor] = useState<string>(type1.mouth.options[0].fillColor);
-  console.log(type1.eyes.options[0]);
+  const [hairColor, setHairColor] = useState<string>(type1.mouth.options[0].fillColor);
+  const [tempHairColor, setTempHairColor] = useState<string>(type1.mouth.options[0].fillColor);
 
   const stageRef = React.useRef(null);
 
@@ -91,6 +93,17 @@ function downloadURI(uri, name) {
               draggable
               useKonva
             />
+            <SvgImage
+              id="hair"
+              src={hairImageOption.src}
+              width={hairImageOption.width}
+              height={hairImageOption.height}
+              fillColor={hairColor}
+              x={hairImageOption.x}
+              y={hairImageOption.y}
+              draggable
+              useKonva
+            />
           </Layer>
         </Stage>
         <button onClick={handleExport}>Export image</button>
@@ -129,6 +142,15 @@ function downloadURI(uri, name) {
           color={faceColor}
           tempColor={tempFaceColor}
           groupName={type1.ears.name}
+        />
+        <OptionsComponent
+          options={type1.hair.options}
+          setOption={setHairImageOption}
+          color={hairColor}
+          tempColor={tempHairColor}
+          setTempColor={setTempHairColor}
+          setColor={setHairColor}
+          groupName={type1.hair.name}
         />
         <OptionsComponent
           options={type1.glasses.options}
