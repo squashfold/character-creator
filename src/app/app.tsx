@@ -36,6 +36,8 @@ export function App() {
   const [eyesImageOption, setEyesImageOption] = useState(type1.eyes.options[0]);
   const [faceColor, setFaceColor] = useState(type1.head.options[0].fillColor);
   const [eyesColor, setEyesColor] = useState(type1.eyes.options[0].fillColor);
+  const [tempFaceColor, setTempFaceColor] = useState(type1.head.options[0].fillColor);
+  const [tempEyesColor, setTempEyesColor] = useState(type1.eyes.options[0].fillColor);
 
   return (
     <>
@@ -47,7 +49,8 @@ export function App() {
             <p>{option.name}</p>
           </button>
         ))}
-        <input type="color" value={faceColor} onChange={(e) => setFaceColor(e.target.value)} />
+        {/* <input type="color" value={faceColor} onChange={(e) => setFaceColor(e.target.value)} /> */}
+        <input type="color" value={tempFaceColor} onChange={(e) => setTempFaceColor(e.target.value)} onBlur={() => setFaceColor(tempFaceColor)} />
       </div>
       <div>
         {type1.eyes.options.map((option, index) => (
@@ -57,7 +60,8 @@ export function App() {
             <p>{option.name}</p>
           </button>
         ))}
-        <input type="color" value={eyesColor} onChange={(e) => setEyesColor(e.target.value)} />
+        {/* <input type="color" value={eyesColor} onChange={(e) => setEyesColor(e.target.value)} /> */}
+        <input type="color" value={tempEyesColor} onChange={(e) => setTempEyesColor(e.target.value)} onBlur={() => setEyesColor(tempEyesColor)} />
       </div>
       <Stage className={styles.stage} width={540} height={540}>
         <Layer>
