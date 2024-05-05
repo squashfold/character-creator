@@ -1,14 +1,41 @@
-/* Your styles goes here. */
+.app {
+    display: grid;
+    grid-template-columns: 600px auto;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .stage {
-    border: 2px solid green;
+    // border: 2px solid green;
 
     > * {
         
-        border: 2px solid red;
+        // border: 2px solid red;
+        margin: 0 auto;
     }
+}
+
+.optionsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .previewImage {
     width: 100px;
     height: auto;
+}
+
+.optionButton {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #e0e0e0;
+    }
 }

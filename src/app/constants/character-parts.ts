@@ -5,10 +5,12 @@ import head3 from '../../assets/character-parts/type1/head3.svg'
 import eyes1 from '../../assets/character-parts/type1/eyes1.svg'
 import eyes2 from '../../assets/character-parts/type1/eyes2.svg'
 import eyes3 from '../../assets/character-parts/type1/eyes3.svg'
+import glasses1 from '../../assets/character-parts/type1/glasses1.svg'
+import glasses2 from '../../assets/character-parts/type1/glasses2.svg'
 
 interface CharacterPartOptions {
     name: string;
-    src: string;
+    src: string | null;
     fillColor: string;
     strokeColor?: string;
 }
@@ -20,6 +22,9 @@ interface CharacterParts {
     };
     eyes: {
         defaultFill: string;
+        options: CharacterPartOptions[];
+    };
+    glasses: {
         options: CharacterPartOptions[];
     };
 }
@@ -66,6 +71,27 @@ export const type1: CharacterParts = {
             {
                 name: 'eyes3',
                 src: eyes3,
+                fillColor: '#ffffff',
+                strokeColor: '#000'
+            },
+        ],
+    },
+    glasses: {
+        options: [
+            {
+                name: 'none',
+                src: null,
+                fillColor: '#ffffff',
+            },
+            {
+                name: 'glasses1',
+                src: glasses1,
+                fillColor: '#ffffff',
+                strokeColor: '#000'
+            },
+            {
+                name: 'glasses2',
+                src: glasses2,
                 fillColor: '#ffffff',
                 strokeColor: '#000'
             },
