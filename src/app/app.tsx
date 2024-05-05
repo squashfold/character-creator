@@ -1,40 +1,18 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import styles from './app.module.scss';
 import { Stage, Layer } from 'react-konva';
-import { type1, Option } from './constants/character-parts';
-import SvgImage, { SvgImageProps } from './svgImage';
-
-interface OptionsComponentProps {
-  options: Option[];
-  setOption: React.Dispatch<React.SetStateAction<Option>>;
-  color: string;
-  tempColor: string;
-  setTempColor: React.Dispatch<React.SetStateAction<string>>;
-  setColor: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const OptionsComponent: React.FC<OptionsComponentProps> = ({ options, setOption, color, tempColor, setTempColor, setColor }) => (
-  <div className={styles.optionsList}>
-    {options.map((option, index) => (
-      <button className={styles.optionButton} key={index} onClick={() => setOption(option)}>
-        <SvgImage id={index.toString()} className={styles.previewImage} src={option.src} fillColor={color} useKonva={false} />
-        <p>{option.name}</p>
-      </button>
-    ))}
-    <input type="color" value={tempColor} onChange={(e: ChangeEvent<HTMLInputElement>) => setTempColor(e.target.value)} onBlur={() => setColor(tempColor)} />
-  </div>
-);
+import { type1, CharacterPartOptions } from './constants/character-parts';
+import SvgImage from './svgImage';
+import OptionsComponent from './OptionsComponent';
 
 export function App() {
-  const [faceImageOption, setFaceImageOption] = useState<Option>(type1.head.options[0]);
-  const [eyesImageOption, setEyesImageOption] = useState<Option>(type1.eyes.options[0]);
-  const [glassesImageOption, setGlassesImageOption] = useState<Option>(type1.glasses.options[0]);
+  const [faceImageOption, setFaceImageOption] = useState<CharacterPartOptions>(type1.head.options[0]);
+  const [eyesImageOption, setEyesImageOption] = useState<CharacterPartOptions>(type1.eyes.options[0]);
+  const [glassesImageOption, setGlassesImageOption] = useState<CharacterPartOptions>(type1.glasses.options[0]);
   const [faceColor, setFaceColor] = useState<string>(type1.head.options[0].fillColor);
   const [tempFaceColor, setTempFaceColor] = useState<string>(type1.head.options[0].fillColor);
   const [eyesColor, setEyesColor] = useState<string>(type1.eyes.options[0].fillColor);
   const [tempEyesColor, setTempEyesColor] = useState<string>(type1.eyes.options[0].fillColor);
-  const [glassesColor, setGlassesColor] = useState<string>(type1.glasses.options[0].fillColor);
-  const [tempGlassesColor, setTempGlassesColor] = useState<string>(type1.glasses.options[0].fillColor);
 
   return (
     <div className={styles.app}>
@@ -42,7 +20,7 @@ export function App() {
         <Layer>
           <SvgImage id="face" src={faceImageOption.src} fillColor={faceColor} useKonva />
           <SvgImage id="eyes" src={eyesImageOption.src} fillColor={eyesColor} useKonva />
-          <SvgImage id="glasses" src={glassesImageOption.src} fillColor={glassesColor} useKonva />
+          <SvgImage id="glasses" src={glassesImageOption.src} useKonva />
         </Layer>
       </Stage>
       <section className={styles.options}>
@@ -53,6 +31,7 @@ export function App() {
           tempColor={tempFaceColor}
           setTempColor={setTempFaceColor}
           setColor={setFaceColor}
+          groupName={type1.head.name}
         />
         <OptionsComponent
           options={type1.eyes.options}
@@ -61,14 +40,12 @@ export function App() {
           tempColor={tempEyesColor}
           setTempColor={setTempEyesColor}
           setColor={setEyesColor}
+          groupName={type1.eyes.name}
         />
         <OptionsComponent
           options={type1.glasses.options}
           setOption={setGlassesImageOption}
-          color={glassesColor}
-          tempColor={tempGlassesColor}
-          setTempColor={setTempGlassesColor}
-          setColor={setGlassesColor}
+          groupName={type1.glasses.name}
         />
       </section>
     </div>

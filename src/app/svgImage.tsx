@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Image as KonvaImage } from 'react-konva';
 
-const SvgImage = ({ src, fillColor, useKonva, className = '', id }) => {
-    const [image, setImage] = useState(null);
-  
+const SvgImage = ({ src, fillColor, useKonva, className = '', id }: { src: string | null, fillColor?: string, useKonva?: boolean, className?: string, id: string }) => {
+    const [image, setImage] = useState<HTMLImageElement | null>(null);
     useEffect(() => {
       if (src === null) {
         setImage(null); // If src is null, set image to null
@@ -16,9 +15,11 @@ const SvgImage = ({ src, fillColor, useKonva, className = '', id }) => {
           const parser = new DOMParser();
           const svgDoc = parser.parseFromString(data, "image/svg+xml");
           const paths = svgDoc.querySelectorAll('path');
-          paths.forEach(path => {
-            path.style.fill = fillColor;
-          });
+          if (fillColor){
+            paths.forEach(path => {
+              path.style.fill = fillColor;
+            });
+          }
           const img = new window.Image();
           img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgDoc.documentElement.outerHTML);
           img.onload = () => {

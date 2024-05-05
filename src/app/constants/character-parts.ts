@@ -8,29 +8,33 @@ import eyes3 from '../../assets/character-parts/type1/eyes3.svg'
 import glasses1 from '../../assets/character-parts/type1/glasses1.svg'
 import glasses2 from '../../assets/character-parts/type1/glasses2.svg'
 
-interface CharacterPartOptions {
+export interface CharacterPartOptions {
     name: string;
     src: string | null;
     fillColor: string;
     strokeColor?: string;
 }
 
-interface CharacterParts {
+export interface CharacterParts {
     head: {
         defaultFill: string;
+        name: string;
         options: CharacterPartOptions[];
     };
     eyes: {
         defaultFill: string;
+        name: string;
         options: CharacterPartOptions[];
     };
     glasses: {
+        name: string;
         options: CharacterPartOptions[];
     };
 }
 
 export const type1: CharacterParts = {
     head: {
+        name: 'Head',
         defaultFill: '#eeeeee',
         options: [
             {
@@ -54,6 +58,7 @@ export const type1: CharacterParts = {
         ],
     },
     eyes: {
+        name: 'Eyes',
         defaultFill: '#eeeeee',
         options: [
             {
@@ -77,6 +82,7 @@ export const type1: CharacterParts = {
         ],
     },
     glasses: {
+        name: 'Glasses',
         options: [
             {
                 name: 'none',
