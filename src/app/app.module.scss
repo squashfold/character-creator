@@ -1,6 +1,10 @@
 .app {
     display: grid;
     grid-template-columns: 600px auto;
+}
+
+.page {
+    
     max-width: 1200px;
     margin: 0 auto;
 }

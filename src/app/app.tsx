@@ -5,6 +5,10 @@ import { type1, CharacterPartOptions } from './constants/character-parts';
 import SvgImage from './svgImage';
 import OptionsComponent from './OptionsComponent';
 
+import type { CollapseProps } from 'antd';
+import { Collapse, Tabs } from 'antd';
+import { ItemType } from 'antd/es/menu/hooks/useItems';
+
 export function App() {
   const [faceImageOption, setFaceImageOption] = useState<CharacterPartOptions>(type1.head.options[0]);
   const [eyesImageOption, setEyesImageOption] = useState<CharacterPartOptions>(type1.eyes.options[0]);
@@ -14,15 +18,10 @@ export function App() {
   const [mouthImageOption, setMouthImageOption] = useState<CharacterPartOptions>(type1.mouth.options[0]);
   const [backgroundImageOption, setBackgroundImageOption] = useState<CharacterPartOptions>(type1.mouth.options[0]);
   const [faceColor, setFaceColor] = useState<string>(type1.head.options[0].fillColor);
-  const [tempFaceColor, setTempFaceColor] = useState<string>(type1.head.options[0].fillColor);
   const [eyesColor, setEyesColor] = useState<string>(type1.eyes.options[0].fillColor);
-  const [tempEyesColor, setTempEyesColor] = useState<string>(type1.eyes.options[0].fillColor);
   const [mouthColor, setMouthColor] = useState<string>(type1.mouth.options[0].fillColor);
-  const [tempMouthColor, setTempMouthColor] = useState<string>(type1.mouth.options[0].fillColor);
   const [hairColor, setHairColor] = useState<string>(type1.mouth.options[0].fillColor);
-  const [tempHairColor, setTempHairColor] = useState<string>(type1.mouth.options[0].fillColor);
   const [backgroundColor, setBackgroundColor] = useState<string>(type1.mouth.options[0].fillColor);
-  const [tempBackgroundColor, setTempBackgroundColor] = useState<string>(type1.mouth.options[0].fillColor);
 
   const stageRef = React.useRef(null);
 
@@ -40,8 +39,76 @@ function downloadURI(uri, name) {
     document.body.removeChild(link);
 }
 
+
+
+const optionsConfig = [
+  {
+    options: type1.head.options,
+    setOption: setFaceImageOption,
+    color: faceColor,
+    setColor: setFaceColor,
+    groupName: type1.head.name,
+  },
+  {
+    options: type1.eyes.options,
+    setOption: setEyesImageOption,
+    color: eyesColor,
+    setColor: setEyesColor,
+    groupName: type1.eyes.name,
+  },
+  {
+    options: type1.mouth.options,
+    setOption: setMouthImageOption,
+    color: mouthColor,
+    setColor: setMouthColor,
+    groupName: type1.mouth.name,
+  },
+  {
+    options: type1.ears.options,
+    setOption: setEarsImageOption,
+    color: faceColor,
+    groupName: type1.ears.name,
+  },
+  {
+    options: type1.hair.options,
+    setOption: setHairImageOption,
+    color: hairColor,
+    setColor: setHairColor,
+    groupName: type1.hair.name,
+  },
+  {
+    options: type1.glasses.options,
+    setOption: setGlassesImageOption,
+    groupName: type1.glasses.name,
+  },
+  {
+    options: type1.background.options,
+    setOption: setBackgroundImageOption,
+    color: backgroundColor,
+    setColor: setBackgroundColor,
+    groupName: type1.background.name},
+];
+
+const optionsComponents = optionsConfig.map((item, index) => ({
+  key: index,
+  label: item.groupName,
+  children: <OptionsComponent
+    key={index}
+    options={item.options}
+    setOption={item.setOption}
+    color={item.color}
+    setColor={item.setColor}
+    groupName={item.groupName}
+  />,
+}
+));
+
   return (
-    <div className={styles.app}>
+    <div className={styles.page}>
+      <header>
+        <h1>Character Creator</h1>
+      </header>
+      <div className={styles.app}>
       <section>
         <Stage ref={stageRef} className={styles.stage} width={549} height={540} scale={{ x: 0.5, y: 0.5 }}>
           <Layer>
@@ -121,64 +188,17 @@ function downloadURI(uri, name) {
         <button onClick={handleExport}>Export image</button>
       </section>
       <section className={styles.options}>
-        <OptionsComponent
-          options={type1.head.options}
-          setOption={setFaceImageOption}
-          color={faceColor}
-          tempColor={tempFaceColor}
-          setTempColor={setTempFaceColor}
-          setColor={setFaceColor}
-          groupName={type1.head.name}
-        />
-        <OptionsComponent
-          options={type1.eyes.options}
-          setOption={setEyesImageOption}
-          color={eyesColor}
-          tempColor={tempEyesColor}
-          setTempColor={setTempEyesColor}
-          setColor={setEyesColor}
-          groupName={type1.eyes.name}
-        />
-        <OptionsComponent
-          options={type1.mouth.options}
-          setOption={setMouthImageOption}
-          color={mouthColor}
-          tempColor={tempMouthColor}
-          setTempColor={setTempMouthColor}
-          setColor={setMouthColor}
-          groupName={type1.mouth.name}
-        />
-        <OptionsComponent
-          options={type1.ears.options}
-          setOption={setEarsImageOption}
-          color={faceColor}
-          tempColor={tempFaceColor}
-          groupName={type1.ears.name}
-        />
-        <OptionsComponent
-          options={type1.hair.options}
-          setOption={setHairImageOption}
-          color={hairColor}
-          tempColor={tempHairColor}
-          setTempColor={setTempHairColor}
-          setColor={setHairColor}
-          groupName={type1.hair.name}
-        />
-        <OptionsComponent
-          options={type1.glasses.options}
-          setOption={setGlassesImageOption}
-          groupName={type1.glasses.name}
-        />
-        <OptionsComponent
-          options={type1.background.options}
-          setOption={setBackgroundImageOption}
-          color={backgroundColor}
-          tempColor={tempBackgroundColor}
-          setTempColor={setTempBackgroundColor}
-          setColor={setBackgroundColor}
-          groupName={type1.background.name}
-        />
+        {/* const filteredOptionsComponents = optionsComponents.filter((item) => item !== null); */}
+        {/* <Collapse items={optionsComponents as ItemType[]} defaultActiveKey={['1']} />; */}
+
+        <Tabs
+        defaultActiveKey="1"
+        tabPosition="left"
+        style={{ height: 600 }}
+        items={optionsComponents as ItemType[]}
+      />
       </section>
+      </div>
     </div>
   );
 }
