@@ -4,7 +4,7 @@
 }
 
 .page {
-    
+    padding: 1rem;    
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -17,10 +17,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem;
 }
 
 .sidebar {
     background-color: white;
+    padding-top: 1rem;
 }
 
 .stageWrap {
@@ -42,6 +44,12 @@
         // border: 2px solid red;
         margin: 0 auto;
     }
+}
+
+.contentWrap {
+    padding: 1rem;
+    background-color: #eeeeee;
+    // background-color: white;
 }
 
 .options {

@@ -5,7 +5,7 @@ import { type1, CharacterPartOptions } from './constants/character-parts';
 import SvgImage from './svgImage';
 import OptionsComponent from './OptionsComponent';
 
-import { Layout, Tabs, Button } from 'antd';
+import { Layout, Tabs, Button, Divider } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons'
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 
@@ -110,10 +110,9 @@ const optionsComponents = optionsConfig.map((item, index) => ({
       <Header className={styles.header}>
         <h1>Character Creator</h1>
         
-        <Button onClick={handleExport} icon={<DownloadOutlined />}> Export image</Button>
       </Header>
-      <Layout>
-        <Sider width="60"></Sider>
+      <Layout className={styles.contentWrap}>
+        {/* <Sider width="60"></Sider> */}
         <Content>
         <div className={styles.stageWrap}>
           <Stage ref={stageRef} className={styles.stage} width={549} height={540} scale={{ x: 0.5, y: 0.5 }}>
@@ -202,7 +201,11 @@ const optionsComponents = optionsConfig.map((item, index) => ({
         />
         </Sider>
       </Layout>
-      <Footer >Footer</Footer>
+      <Footer >
+        
+        <Divider style={{marginTop: 0}} />
+        <Button onClick={handleExport} icon={<DownloadOutlined />}> Export image</Button>
+      </Footer>
     </Layout>
   );
 }
