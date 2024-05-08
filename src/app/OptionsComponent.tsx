@@ -19,23 +19,25 @@ interface OptionsComponentProps {
     return (
         <div>
             <div>
-            <div className={`${styles.optionsList}`}>
-                {options.map((option, index) => (
-                    <button className={styles.optionButton} key={index} onClick={() => setOption(option)}>
-                        <div className={styles.previewImageContainer}>
-                            <SvgImage id={index.toString()} className={styles.previewImage} src={option.src} fillColor={color && color} useKonva={false} />
-                        </div>
-                        <p>{option.name}</p>
-                    </button>
-                ))}
-            </div>
-                {setColor && (
+                <h2>{groupName}</h2>
+            {setColor && (
                     <ColorPicker
                         defaultValue={color}
                         onChangeComplete={(color) => setColor(color.toHexString())}
                         showText={(color) => <span>Fill ({color.toHexString()})</span>}
                     />
                 )}
+                <div className={`${styles.optionsList}`}>
+                    {options.map((option, index) => (
+                        <button className={styles.optionButton} key={index} onClick={() => setOption(option)}>
+                            <div className={styles.previewImageContainer}>
+                                <SvgImage id={index.toString()} className={styles.previewImage} src={option.src} fillColor={color && color} useKonva={false} />
+                            </div>
+                            <p>{option.name}</p>
+                        </button>
+                    ))}
+                </div>
+                
             </div>
         </div>
     );

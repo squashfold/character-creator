@@ -5,9 +5,11 @@ import { type1, CharacterPartOptions } from './constants/character-parts';
 import SvgImage from './svgImage';
 import OptionsComponent from './OptionsComponent';
 
-import type { CollapseProps } from 'antd';
-import { Collapse, Tabs } from 'antd';
+import { Layout, Tabs, Button } from 'antd';
+import { DownloadOutlined } from '@ant-design/icons'
 import { ItemType } from 'antd/es/menu/hooks/useItems';
+
+const { Header, Footer, Sider, Content } = Layout;
 
 export function App() {
   const [faceImageOption, setFaceImageOption] = useState<CharacterPartOptions>(type1.head.options[0]);
@@ -104,102 +106,104 @@ const optionsComponents = optionsConfig.map((item, index) => ({
 ));
 
   return (
-    <div className={styles.page}>
-      <header>
+    <Layout className={styles.layout}>
+      <Header className={styles.header}>
         <h1>Character Creator</h1>
-      </header>
-      <div className={styles.app}>
-      <section>
-        <Stage ref={stageRef} className={styles.stage} width={549} height={540} scale={{ x: 0.5, y: 0.5 }}>
-          <Layer>
-            <SvgImage
-              id="background"
-              src={backgroundImageOption.src}
-              width={backgroundImageOption.width}
-              height={backgroundImageOption.height}
-              fillColor={backgroundColor}
-              x={backgroundImageOption.x}
-              y={backgroundImageOption.y}
-              useKonva
-            />
-            <SvgImage
-              id="ears"
-              src={earsImageOption.src}
-              width={earsImageOption.width}
-              height={earsImageOption.height}
-              fillColor={faceColor}
-              x={earsImageOption.x}
-              y={earsImageOption.y}
-              draggable
-              useKonva
-            />
-            <SvgImage
-              id="face"
-              src={faceImageOption.src}
-              fillColor={faceColor}
-              width={faceImageOption.width}
-              height={faceImageOption.height}
-              x={faceImageOption.x}
-              y={faceImageOption.y}
-              useKonva
-            />
-            <SvgImage
-              id="eyes"
-              src={eyesImageOption.src}
-              fillColor={eyesColor}
-              width={eyesImageOption.width}
-              height={eyesImageOption.height}
-              x={eyesImageOption.x}
-              y={eyesImageOption.y}
-              useKonva 
-            />
-            <SvgImage
-              id="glasses"
-              src={glassesImageOption.src}
-              width={glassesImageOption.width}
-              height={glassesImageOption.height}
-              x={glassesImageOption.x}
-              y={glassesImageOption.y}
-              useKonva
-            />
-            <SvgImage
-              id="mouth"
-              src={mouthImageOption.src}
-              width={mouthImageOption.width}
-              height={mouthImageOption.height}
-              fillColor={mouthColor}
-              x={mouthImageOption.x}
-              y={mouthImageOption.y}
-              draggable
-              useKonva
-            />
-            <SvgImage
-              id="hair"
-              src={hairImageOption.src}
-              width={hairImageOption.width}
-              height={hairImageOption.height}
-              fillColor={hairColor}
-              x={hairImageOption.x}
-              y={hairImageOption.y}
-              useKonva
-            />
-          </Layer>
-        </Stage>
-        <button onClick={handleExport}>Export image</button>
-      </section>
-      <section className={styles.options}>
-        {/* const filteredOptionsComponents = optionsComponents.filter((item) => item !== null); */}
-        {/* <Collapse items={optionsComponents as ItemType[]} defaultActiveKey={['1']} />; */}
-
-        <Tabs
-        defaultActiveKey="1"
-        tabPosition="left"
-        style={{ height: 600 }}
-        items={optionsComponents as ItemType[]}
-      />
-      </section>
-      </div>
-    </div>
+        
+        <Button onClick={handleExport} icon={<DownloadOutlined />}> Export image</Button>
+      </Header>
+      <Layout>
+        <Sider width="60"></Sider>
+        <Content>
+        <div className={styles.stageWrap}>
+          <Stage ref={stageRef} className={styles.stage} width={549} height={540} scale={{ x: 0.5, y: 0.5 }}>
+            <Layer>
+              <SvgImage
+                id="background"
+                src={backgroundImageOption.src}
+                width={backgroundImageOption.width}
+                height={backgroundImageOption.height}
+                fillColor={backgroundColor}
+                x={backgroundImageOption.x}
+                y={backgroundImageOption.y}
+                useKonva
+              />
+              <SvgImage
+                id="ears"
+                src={earsImageOption.src}
+                width={earsImageOption.width}
+                height={earsImageOption.height}
+                fillColor={faceColor}
+                x={earsImageOption.x}
+                y={earsImageOption.y}
+                draggable
+                useKonva
+              />
+              <SvgImage
+                id="face"
+                src={faceImageOption.src}
+                fillColor={faceColor}
+                width={faceImageOption.width}
+                height={faceImageOption.height}
+                x={faceImageOption.x}
+                y={faceImageOption.y}
+                useKonva
+              />
+              <SvgImage
+                id="eyes"
+                src={eyesImageOption.src}
+                fillColor={eyesColor}
+                width={eyesImageOption.width}
+                height={eyesImageOption.height}
+                x={eyesImageOption.x}
+                y={eyesImageOption.y}
+                useKonva 
+              />
+              <SvgImage
+                id="glasses"
+                src={glassesImageOption.src}
+                width={glassesImageOption.width}
+                height={glassesImageOption.height}
+                x={glassesImageOption.x}
+                y={glassesImageOption.y}
+                useKonva
+              />
+              <SvgImage
+                id="hair"
+                src={hairImageOption.src}
+                width={hairImageOption.width}
+                height={hairImageOption.height}
+                fillColor={hairColor}
+                x={hairImageOption.x}
+                y={hairImageOption.y}
+                useKonva
+              />
+              <SvgImage
+                id="mouth"
+                src={mouthImageOption.src}
+                width={mouthImageOption.width}
+                height={mouthImageOption.height}
+                fillColor={mouthColor}
+                x={mouthImageOption.x}
+                y={mouthImageOption.y}
+                draggable
+                useKonva
+              />
+            </Layer>
+          </Stage>
+        </div>
+        </Content>
+        <Sider width="50%" className={styles.sidebar}>
+          <Tabs
+          defaultActiveKey="1"
+          tabPosition="left"
+          style={{ height: '100%' }}
+          items={optionsComponents as ItemType[]}
+        />
+        </Sider>
+      </Layout>
+      <Footer >Footer</Footer>
+    </Layout>
   );
 }
 

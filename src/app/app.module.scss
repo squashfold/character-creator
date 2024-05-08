@@ -9,11 +9,33 @@
     margin: 0 auto;
 }
 
+.layout {
+    min-height: 100svh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar {
+    background-color: white;
+}
+
+.stageWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
 .stage {
     // border: 2px solid green;
     width: 540px;
     height: 540px;
     overflow: hidden;
+    background-color: white;
 
     > * {
         
