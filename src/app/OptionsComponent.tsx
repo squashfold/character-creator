@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import { CharacterPartOptions } from './constants/character-parts';
 import styles from './app.module.scss';
 import SvgImage from './svgImage';
-import { ColorPicker } from 'antd';
+import { ColorPicker, Slider, InputNumber, Divider } from 'antd';
 
 interface OptionsComponentProps {
     options: CharacterPartOptions[];
@@ -12,21 +12,44 @@ interface OptionsComponentProps {
     // setTempColor?: React.Dispatch<React.SetStateAction<string>>;
     setColor?: React.Dispatch<React.SetStateAction<string>>;
     groupName?: string;
+    scale?: number;
+    setScale?: React.Dispatch<React.SetStateAction<number>>;
   }
   
-  const OptionsComponent: React.FC<OptionsComponentProps> = ({ options, setOption, color, setColor, groupName }) => {
+  const OptionsComponent: React.FC<OptionsComponentProps> = ({ options, setOption, color, setColor, groupName, scale = 1, setScale }) => {
 
     return (
         <div>
             <div>
                 <h2>{groupName}</h2>
-            {setColor && (
-                    <ColorPicker
-                        defaultValue={color}
-                        onChangeComplete={(color) => setColor(color.toHexString())}
-                        showText={(color) => <span>Fill ({color.toHexString()})</span>}
-                    />
-                )}
+                    {setColor && (
+                        <ColorPicker
+                            defaultValue={color}
+                            onChangeComplete={(color) => setColor(color.toHexString())}
+                            showText={(color) => <span>Fill ({color.toHexString()})</span>}
+                        />
+                    )}
+                    {setScale && (
+                        <>
+                            <Slider
+                                min={0.1}
+                                max={1}
+                                step={0.01}
+                                onChange={(scale) => setScale(scale as number)}
+                                value={typeof scale === 'number' ? scale : 0}
+                            />
+                            <InputNumber
+                                min={0.1}
+                                max={1}
+                                style={{ margin: '0 16px' }}
+                                value={scale}
+                                step={0.01}
+                                onChange={(scale) => setScale(scale as number)}
+                            />
+                        </>
+                    )}
+                    
+                <Divider  />
                 <div className={`${styles.optionsList}`}>
                     {options.map((option, index) => (
                         <button className={styles.optionButton} key={index} onClick={() => setOption(option)}>

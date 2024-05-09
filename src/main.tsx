@@ -1,9 +1,7 @@
-import { StrictMode } from 'react';
-import * as ReactDOM from 'react-dom/client';;
-
-import { ConfigProvider } from 'antd';
-
 import App from './app/app';
+import { StrictMode } from 'react';
+import { ConfigProvider } from 'antd';
+import * as ReactDOM from 'react-dom/client';;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +13,7 @@ root.render(
         components: {
           Layout: {
             siderBg: '#EEEEEE',
-            headerBg: '#424242',
+            headerBg: '#090C0E',
             headerColor: '#ffffff',
             bodyBg: '#ffffff',
             footerBg: '#EEEEEE',
