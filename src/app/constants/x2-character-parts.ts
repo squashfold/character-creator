@@ -72,7 +72,7 @@ export const type1: CharacterParts = {
         defaultFill: '#eeeeee',
         options: [
             {
-                name: 'eyes1',
+                name: 'Eyes 1',
                 src: eyes1,
                 fillColor: '#ffffff',
                 strokeColor: '#000',

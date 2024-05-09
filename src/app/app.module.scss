@@ -60,7 +60,8 @@
     align-items: stretch;
     padding: 20px;
     z-index: 10;
-
+    max-height: 70svh;
+    overflow: auto;
 }
 
 .optionsList {
@@ -69,7 +70,8 @@
     justify-content: flex-start;
     align-items: stretch;
     z-index: 10;
-    gap: .5rem;
+    gap: 1rem;
+    overflow: auto;
 }
 
 .previewImageContainer {
@@ -86,45 +88,14 @@
 }
 
 .optionButton {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 10px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    padding: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
         background-color: #e0e0e0;
     }
-}
-
-.accordion {
-    margin-bottom: 1rem;
-}
-
-.accordionHeader {
-    width: 100%;
-    margin-bottom: .5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.accordionHeaderClosed {
-    &::after {
-        content: '+';
-    }
-}
-
-.accordionHeaderOpen {
-    &::after {
-        content: '-';
-    }
-}
-
-.open {
-
-}
-
-.closed {
-    display: none;
 }

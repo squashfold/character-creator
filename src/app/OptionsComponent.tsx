@@ -19,7 +19,7 @@ interface OptionsComponentProps {
   const OptionsComponent: React.FC<OptionsComponentProps> = ({ options, setOption, color, setColor, groupName, scale = 1, setScale }) => {
 
     return (
-        <div>
+        <div className={styles.options}>
             <div>
                 <h2>{groupName}</h2>
                     {setColor && (

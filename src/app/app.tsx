@@ -214,7 +214,7 @@ const [color, setColor] = useState('#B290C7');
           </Stage>
         </div>
         </Content>
-        <Sider width="50%" className={styles.sidebar}>
+        <Sider width="50%" className={styles.sidebar} >
           <Tabs
           defaultActiveKey="1"
           tabPosition="left"
