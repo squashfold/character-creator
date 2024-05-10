@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
 import styles from './app.module.scss';
 import { Stage, Layer, Rect } from 'react-konva';
-import { type1, CharacterPartOptions } from './constants/x2-character-parts';
+import { type1, CharacterPartOptions } from './constants/x3-character-parts';
 import SvgImage from './svgImage';
 import OptionsComponent from './OptionsComponent';
 
 import { Layout, Tabs, Button, Divider, ColorPicker, Flex } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
-import { DownloadOutlined } from '@ant-design/icons'
+import { DownloadOutlined, GithubOutlined } from '@ant-design/icons'
 import { ItemType } from 'antd/es/menu/hooks/useItems';
 
 const { Header, Footer, Sider, Content } = Layout;
 
 export function App() {
-  // const [faceImageOption, setFaceImageOption] = useState<CharacterPartOptions>(type1.head.options[0]);
-  const [eyesImageOption, setEyesImageOption] = useState<CharacterPartOptions>(type1.eyes.options[0]);
-  // const [earsImageOption, setEarsImageOption] = useState<CharacterPartOptions>(type1.ears.options[0]);
-  const [hairImageOption, setHairImageOption] = useState<CharacterPartOptions>(type1.ears.options[0]);
-  const [glassesImageOption, setGlassesImageOption] = useState<CharacterPartOptions>(type1.glasses.options[0]);
-  const [mouthImageOption, setMouthImageOption] = useState<CharacterPartOptions>(type1.mouth.options[0]);
-  const [backgroundImageOption, setBackgroundImageOption] = useState<CharacterPartOptions>(type1.background.options[0]);
-  const [noseImageOption, setNoseImageOption] = useState<CharacterPartOptions>(type1.background.options[0]);
-  // const [faceColor, setFaceColor] = useState<string>(type1.head.options[0].fillColor);
+  const [faceImageOption, setFaceImageOption] = useState<CharacterPartOptions>(type1.head.options[type1.head.defaultOption]);
+  const [eyesImageOption, setEyesImageOption] = useState<CharacterPartOptions>(type1.eyes.options[type1.eyes.defaultOption]);
+  const [earsImageOption, setEarsImageOption] = useState<CharacterPartOptions>(type1.ears.options[type1.ears.defaultOption]);
+  const [hairImageOption, setHairImageOption] = useState<CharacterPartOptions>(type1.hair.options[type1.hair.defaultOption]);
+  // const [hairBackgroundImageOption, setHairBackgroundImageOption] = useState<CharacterPartOptions>(type1.hair.options[0].background);
+  const [glassesImageOption, setGlassesImageOption] = useState<CharacterPartOptions>(type1.glasses.options[type1.glasses.defaultOption]);
+  const [mouthImageOption, setMouthImageOption] = useState<CharacterPartOptions>(type1.mouth.options[type1.mouth.defaultOption]);
+  const [backgroundImageOption, setBackgroundImageOption] = useState<CharacterPartOptions>(type1.background.options[type1.background.defaultOption]);
+  const [noseImageOption, setNoseImageOption] = useState<CharacterPartOptions>(type1.background.options[type1.background.defaultOption]);
+  const [faceColor, setFaceColor] = useState<string>(type1.head.options[type1.head.defaultOption].fillColor);
   const [noseScale, setNoseScale] = useState<number>(1);
-  const [eyesColor, setEyesColor] = useState<string>(type1.eyes.options[0].fillColor);
+  const [eyesColor, setEyesColor] = useState<string>(type1.eyes.options[type1.eyes.defaultOption].fillColor);
   const [eyesScale, setEyesScale] = useState<number>(1);
-  const [mouthColor, setMouthColor] = useState<string>(type1.mouth.options[0].fillColor);
+  const [mouthColor, setMouthColor] = useState<string>(type1.mouth.options[type1.mouth.defaultOption].fillColor);
   const [mouthScale, setMouthScale] = useState<number>(1);
-  const [hairColor, setHairColor] = useState<string>(type1.mouth.options[0].fillColor);
-  const [backgroundColor, setBackgroundColor] = useState<string>(type1.mouth.options[0].fillColor);
+  const [hairColor, setHairColor] = useState<string>(type1.hair.options[type1.hair.defaultOption].fillColor);
+  const [backgroundColor, setBackgroundColor] = useState<string>(type1.mouth.options[type1.mouth.defaultOption].fillColor);
 
   const stageRef = React.useRef(null);
 
@@ -49,13 +50,13 @@ function downloadURI(uri, name) {
 
 
 const optionsConfig = [
-  // {
-  //   options: type1.head.options,
-  //   setOption: setFaceImageOption,
-  //   color: faceColor,
-  //   setColor: setFaceColor,
-  //   groupName: type1.head.name,
-  // },
+  {
+    options: type1.head.options,
+    setOption: setFaceImageOption,
+    color: faceColor,
+    setColor: setFaceColor,
+    groupName: type1.head.name,
+  },
   {
     options: type1.eyes.options,
     setOption: setEyesImageOption,
@@ -81,12 +82,12 @@ const optionsConfig = [
     scale: noseScale,
     setScale: setNoseScale,
   },
-  // {
-  //   options: type1.ears.options,
-  //   setOption: setEarsImageOption,
-  //   color: faceColor,
-  //   groupName: type1.ears.name,
-  // },
+  {
+    options: type1.ears.options,
+    setOption: setEarsImageOption,
+    color: faceColor,
+    groupName: type1.ears.name,
+  },
   {
     options: type1.hair.options,
     setOption: setHairImageOption,
@@ -103,7 +104,7 @@ const optionsConfig = [
     options: type1.background.options,
     setOption: setBackgroundImageOption,
     color: backgroundColor,
-    setColor: setBackgroundColor,
+    // setColor: setBackgroundColor,
     groupName: type1.background.name},
 ];
 
@@ -125,12 +126,14 @@ const optionsComponents = optionsConfig.map((item, index) => ({
 
 const [color, setColor] = useState('#B290C7');
 
-
   return (
     <Layout className={styles.layout}>
       <Header className={styles.header}>
         <h1><EditOutlined /> Avatar Customizer</h1>
-        
+        <Flex gap="1rem" align="center">
+          <Button ghost href="https://squash-fold.com">Built by Charlie Prince</Button>
+          <Button type="default" href="https://github.com/squashfold/character-creator" icon={<GithubOutlined />}>View on GitHub</Button>
+        </Flex>
       </Header>
       <Layout className={styles.contentWrap}>
         {/* <Sider width="60"></Sider> */}
@@ -154,6 +157,41 @@ const [color, setColor] = useState('#B290C7');
                 x={backgroundImageOption.x}
                 y={backgroundImageOption.y}
                 useKonva
+              />
+              {hairImageOption.src && (
+                <SvgImage
+                  id="hair-bg"
+                  src={hairImageOption.background.src}
+                  width={hairImageOption.background.width}
+                  height={hairImageOption.background.height}
+                  fillColor={hairColor}
+                  x={hairImageOption.background.x}
+                  y={hairImageOption.background.y}
+                  useKonva
+                />
+              )}
+              <SvgImage
+                id="head"
+                src={faceImageOption.src}
+                fillColor={faceColor}
+                width={faceImageOption.width}
+                height={faceImageOption.height}
+                // scale={eyesScale}
+                x={faceImageOption.x}
+                y={faceImageOption.y}
+                draggable
+                useKonva 
+              />
+              <SvgImage
+                id="ears"
+                src={earsImageOption.src}
+                fillColor={faceColor}
+                width={earsImageOption.width}
+                height={earsImageOption.height}
+                // scale={eyesScale}
+                x={earsImageOption.x}
+                y={earsImageOption.y}
+                useKonva 
               />
               <SvgImage
                 id="eyes"
@@ -227,11 +265,14 @@ const [color, setColor] = useState('#B290C7');
         
         <Divider style={{marginTop: 0}} />
         <Flex gap="1rem" justify="space-between">
+          <Flex>
+
           <ColorPicker
               defaultValue={color}
               onChangeComplete={(color) => setColor(color.toHexString())}
               showText={(color) => <span>Background Color ({color.toHexString()})</span>}
-          />
+            />
+          </Flex>
           <Button type="primary" onClick={handleExport} icon={<DownloadOutlined />}> Export image</Button>
         </Flex>
       </Footer>

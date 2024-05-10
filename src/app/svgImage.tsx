@@ -14,7 +14,7 @@ const SvgImage = ({ src, fillColor, useKonva, className = '', id, width, height,
         .then(data => {
           const parser = new DOMParser();
           const svgDoc = parser.parseFromString(data, "image/svg+xml");
-          const paths = svgDoc.querySelectorAll('path');
+          const paths = svgDoc.querySelectorAll('path, circle');
           if (fillColor){
             paths.forEach(path => {
               path.style.fill = fillColor;
@@ -39,7 +39,7 @@ const SvgImage = ({ src, fillColor, useKonva, className = '', id, width, height,
         y={y ? y : 0}
         id={id}
         scale={{ x: scale, y: scale }}
-        offset={{ x: width ? width / 2 : 1080 / 2, y: height ? height / 2 : 1080 / 2 }}
+        offset={{ x: width ? width / 2 : 1080 / 2, y: 0 }}
         draggable={draggable ? true : false}
         /> : 
       <img 
