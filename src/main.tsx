@@ -17,6 +17,7 @@ root.render(
             headerColor: '#ffffff',
             bodyBg: '#ffffff',
             footerBg: '#EEEEEE',
+            triggerColor: '#000',
           }
         },
       }}

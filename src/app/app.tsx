@@ -125,6 +125,7 @@ const optionsComponents = optionsConfig.map((item, index) => ({
 ));
 
 const [color, setColor] = useState('#B290C7');
+let isDesktop = window.innerWidth > 800;
 
   return (
     <Layout className={styles.layout}>
@@ -252,10 +253,10 @@ const [color, setColor] = useState('#B290C7');
           </Stage>
         </div>
         </Content>
-        <Sider width="50%" className={styles.sidebar} >
+        <Sider collapsible={!isDesktop} collapsedWidth={0} reverseArrow defaultCollapsed={!isDesktop} width={isDesktop ? "50%" : "90%"} className={styles.sidebar} >
           <Tabs
           defaultActiveKey="1"
-          tabPosition="left"
+          tabPosition={isDesktop ? "left" : "top"}
           style={{ height: '100%' }}
           items={optionsComponents as ItemType[]}
         />
